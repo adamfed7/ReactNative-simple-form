@@ -19,6 +19,7 @@ public class MainActivity extends ReactActivity {
     setTheme(R.style.AppTheme);
     super.onCreate(null);
   }
+  
 
   /**
    * Returns the name of the main component registered from JavaScript.
