@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -15,7 +14,7 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={HomeScreen}
-          options={{title: 'Welcome'}}
+          options={{title: 'My simple form app'}}
         />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
       </Stack.Navigator>
@@ -23,9 +22,6 @@ export default function App() {
     
   );
 }
-
-
-
 
 const styles = StyleSheet.create({
   container: {
