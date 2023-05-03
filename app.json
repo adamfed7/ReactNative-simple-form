@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "simple-form",
+    "slug": "simple-form",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
