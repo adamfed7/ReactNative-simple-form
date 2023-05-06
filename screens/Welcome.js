@@ -6,7 +6,7 @@ import {
   Button,
   Image,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
@@ -16,7 +16,7 @@ const WelcomeScreen = ({ navigation, route }) => {
   const [gallery, setGallery] = useState([]);
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
     });
 
     if (!result.cancelled) {
@@ -36,25 +36,33 @@ const WelcomeScreen = ({ navigation, route }) => {
       <TouchableOpacity style={styles.button} onPress={pickImage}>
         <Text style={styles.buttonText}>Add photo</Text>
       </TouchableOpacity>
-      
+
       <ScrollView style={styles.scrollView}>
         {gallery.map((imageUri, index) => (
           <View key={index}>
-            <TouchableOpacity onPress={() => removeImage(index)} style={styles.deleteButton}>
+            <TouchableOpacity
+              onPress={() => removeImage(index)}
+              style={styles.deleteButton}
+            >
               <Text style={styles.deleteButtonText}>X</Text>
             </TouchableOpacity>
             <Image source={{ uri: imageUri }} style={styles.image} />
           </View>
         ))}
-        
       </ScrollView>
 
-      <Button
-        style={styles.button}
-        title="Log out"
-        onPress={() => navigation.goBack()}
-      />
-
+      <View style={styles.containerB}>
+        <Button
+          style={styles.button}
+          title="My profile"
+          onPress={() => navigation.navigate("Profile")}
+        />
+        <Button
+          style={styles.button}
+          title="Log out"
+          onPress={() => navigation.goBack()}
+        />
+      </View>
     </View>
   );
 };
@@ -62,20 +70,23 @@ const WelcomeScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
-  text:{
-    fontSize:30,
+  containerB: {
+    flexDirection: "row",
+  },
+  text: {
+    fontSize: 30,
   },
   button: {
-    backgroundColor: '#2196F3',
+    backgroundColor: "#2196F3",
     borderRadius: 10,
-    padding: 10
+    padding: 10,
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
   scrollView: {
     flex: 1,
@@ -86,15 +97,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   deleteButton: {
-    backgroundColor: 'red',
+    backgroundColor: "red",
     borderRadius: 10,
     padding: 10,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginBottom: -30,
   },
   deleteButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
 
